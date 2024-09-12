@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background */
+        }
+
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #6c757d; /* Matching theme color */
+            color: white;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .info-title {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .info-text {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-edit:hover {
+            background-color: #0069d9;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .package-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <button class="btn btn-back mb-3" onclick="window.history.back();">
+            <i class="fas fa-arrow-left"></i> Back to Shipments
+        </button>
+
+        <!-- Package Details Card -->
+        <div class="card">
+            <div class="card-header">
+                Package Details - Tracking ID: <%= packageDetails.trackingNumber %>
+            </div>
+            <div class="card-body">
+                <!-- Package Image -->
+                <% if (packageDetails.packageImage) { %>
+                <div class="mb-3">
+                    <img src="/uploads/<%= packageDetails.packageImage %>" alt="Package Image" class="package-image">
+                </div>
+                <% } %>
+
+                <!-- Recipient Details -->
+                <h5 class="info-title">Recipient Details</h5>
+                <p class="info-text"><strong>Name:</strong> <%= packageDetails.recipientName %></p>
+                <p class="info-text"><strong>Email:</strong> <%= packageDetails.recipientEmail %></p>
+                <p class="info-text"><strong>Address:</strong> <%= packageDetails.recipientAddress %></p>
+                <p class="info-text"><strong>Phone Number:</strong> <%= packageDetails.recipientPhoneNumber %></p>
+
+                <!-- Package Information -->
+                <h5 class="info-title mt-4">Package Information</h5>
+                <p class="info-text"><strong>Package Name:</strong> <%= packageDetails.packageName %></p>
+                <p class="info-text"><strong>Description:</strong> <%= packageDetails.packageDescription %></p>
+                <p class="info-text"><strong>Weight:</strong> <%= packageDetails.weight %></p>
+
+                <!-- Shipping Information -->
+                <h5 class="info-title mt-4">Shipping Information</h5>
+                <p class="info-text"><strong>Shipment Date:</strong> <%= packageDetails.formattedShipmentDate %></p>
+                <p class="info-text"><strong>Expected Delivery Date:</strong> <%= packageDetails.formattedExpectedDeliveryDate %></p>
+                <p class="info-text"><strong>Shipping Method:</strong> <%= packageDetails.shippingMethod %></p>
+                <p class="info-text"><strong>Status:</strong> <%= packageDetails.status %></p>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-edit">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-delete">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Info Card -->
+        <div class="card">
+            <div class="card-header">
+                Additional Information
+            </div>
+            <div class="card-body">
+                <p class="info-text"><strong>Insurance:</strong> Yes</p>
+                <p class="info-text"><strong>Special Instructions:</strong> Handle with care, fragile items.</p>
+                <p class="info-text"><strong>Signature Required:</strong> Yes</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

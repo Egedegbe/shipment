@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background-color: #f8f9fa; /* Light background */
+        font-family: Arial, sans-serif;
+    }
+
+    .banner {
+        background-color: #6c757d; /* Matching theme color */
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        margin-top: 97px;
+    }
+
+    .responsive-box {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .box-title {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .info-text {
+        color: #6c757d;
+        margin: 5px 0;
+    }
+
+    .table-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .table {
+        min-width: 800px; /* Ensures table doesn't shrink too much */
+        width: 100%;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #dee2e6;
+        color: #333;
+        white-space: nowrap;
+    }
+
+    .table tbody td {
+        white-space: nowrap; /* Prevents table content from wrapping */
+    }
+
+    .table tbody tr {
+        background-color: white;
+        border-radius: 8px;
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Enables horizontal scrolling */
+    }
+
+    .package-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+</style>
+
+<!-- Mirrored from preview.colorlib.com/theme/logistics/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Sep 2024 21:31:37 GMT -->
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <div class="site-wrap">
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <%- include('partials/nav.ejs') %>
+
+        <div class="container">
+            <!-- Banner Section -->
+            <div class="banner">
+                <h2>Order Tracking: <%= packageDetails.trackingNumber %></h2>
+                <p>Expected Delivery Date: <%=packageDetails.formattedExpectedDeliveryDate%> |     Status: <%= latestStatus %> | Date Shipped: <%=packageDetails.formattedShipmentDate%></p>
+            </div>
+
+            <!-- Responsive Boxes Section -->
+            <div class="row mt-4">
+                <!-- Shipment Details Box -->
+                <div class="col-md-4">
+                    <div class="responsive-box">
+                        <h5 class="box-title">Shipment Details</h5>
+                        <p class="info-text"><strong>Package Name:</strong> <%=packageDetails.packageName%></p>
+                        <p class="info-text"><strong>Package Value:</strong> <%=packageDetails.packageValue%></p>
+                        <p class="info-text"><strong>Weight:</strong> <%=packageDetails.weight%>kg</p>
+                        <p class="info-text"><strong>Service Type:</strong> <%=packageDetails.shippingMethod%></p>
+                        <p class="info-text"><strong>Description:</strong> <%=packageDetails.packageDescription%></p>
+                        <p class="info-text"><strong>Insurance:</strong> Yes</p>
+                        <p class="info-text"><strong>Payment Method:</strong> Card</p>
+                    </div>
+                </div>
+
+                <!-- Destination Details Box -->
+                <div class="col-md-4">
+                    <div class="responsive-box">
+                        <h5 class="box-title">Destination Details</h5>
+                        <p class="info-text"><strong>Receiver Name:</strong> <%packageDetails.recipientName%></p>
+                        <p class="info-text"><strong>Receiver Email:</strong> <%=packageDetails.recipientEmail%></p>
+                        <p class="info-text"><strong>Receiver Address:</strong> <%=packageDetails.recipientAddress%></p>
+                        <p class="info-text"><strong>Expected Delivery Date:</strong> <%=packageDetails.formattedExpectedDeliveryDate%> </p>
+                    </div>
+                </div>
+
+                <!-- Origin Details Box -->
+                <div class="col-md-4">
+                    <div class="responsive-box">
+                        <h5 class="box-title">Origin Details</h5>
+                        <p class="info-text"><strong>Sender Name:</strong> <%= packageDetails.senderName%></p>
+                        <p class="info-text"><strong>Sender Address:</strong> <%=packageDetails.senderAddress%></p>
+                        <p class="info-text"><strong>Shipment Date:</strong> <%=packageDetails.formattedShipmentDate%></p>
+                    </div>
+                </div>
+
+                <!-- Package Image Box -->
+                <div class="col-md-4 mt-4">
+                    <div class="responsive-box">
+                        <h5 class="box-title">Package Image</h5>
+                        <img src="/uploads/<%= packageDetails.packageImage %>" alt="Package Image" class="package-image">
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Summary Table Section -->
+            <div class="table-container">
+                <h5 class="mb-3">Shipment History</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover table-responsive">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Remark</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% packageDetails.history.forEach(entry => { %>
+                                <tr>
+                                    <td>
+                                        <% if (entry.currentDate) { %>
+                                            <%= new Date(entry.currentDate).toLocaleDateString() %>
+                                        <% } else { %>
+                                            No Date Available
+                                        <% } %>
+                                    </td>
+                                    <td><%= entry.location %></td>
+                                    <td><%= entry.notes %></td>
+                                    <td><%= entry.status %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+    </div>
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/bootstrap-datepicker.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"rayId":"8bf190913ccab8f1","version":"2024.8.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}},"token":"cd0b4b3a733644fc843ef0b185f98241","b":1}'
+        crossorigin="anonymous"></script>
+</body>
+<!-- Mirrored from preview.colorlib.com/theme/logistics/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Sep 2024 21:31

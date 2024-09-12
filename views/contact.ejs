@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from preview.colorlib.com/theme/logistics/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Sep 2024 21:31:37 GMT -->
+<style>
+    .contact_container {
+        background: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .contact-container {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+    }
+    .contact-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+    }
+    .form-control {
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        font-size: 16px;
+        resize: none; /* For the message textarea */
+    }
+    .btn-submit {
+        position: relative;
+        background: #f89d13;
+        border: none;
+        padding: 12px 20px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 100%;
+        cursor: pointer;
+    }
+    .btn-submit:hover {
+        background: #d4840f;
+    }
+    .btn-submit::before {
+        content: '';
+        position: absolute;
+        width: 300%;
+        height: 300%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        transition: transform 0.5s ease;
+    }
+    .btn-submit:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+</style>
+<%- include('./partials/head.ejs') %>
+<body>
+<div class="site-wrap">
+<div class="site-mobile-menu">
+<div class="site-mobile-menu-header">
+<div class="site-mobile-menu-close mt-3">
+<span class="icon-close2 js-menu-toggle"></span>
+</div>
+</div>
+<div class="site-mobile-menu-body"></div>
+</div>
+<%- include('partials/nav.ejs') %>
+<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+<div class="container">
+<div class="row align-items-center justify-content-center text-center">
+<div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
+<h1 class="text-white font-weight-light text-uppercase font-weight-bold">Contact Us</h1>
+<p class="breadcrumb-custom"><a href="/">Home</a> <span class="mx-2">&gt;</span> <span>Contact us</span></p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contact_container">
+
+
+<div class="contact-container">
+    <h2 class="contact-title">Contact Us</h2>
+    <form>
+        <input type="text" class="form-control" placeholder="Your Name" required>
+        <input type="email" class="form-control" placeholder="Your Email" required>
+        <input type="text" class="form-control" placeholder="Subject" required>
+        <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+        <button type="submit" class="btn btn-submit">Send Message</button>
+    </form>
+</div>
+</div>
+<%- include('./partials/footer.ejs') %>
+</div>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/jquery.countdown.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/main.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8bf190913ccab8f1","version":"2024.8.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}},"token":"cd0b4b3a733644fc843ef0b185f98241","b":1}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from preview.colorlib.com/theme/logistics/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Sep 2024 21:31:37 GMT -->
+</html>

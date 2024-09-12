@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Shipping Package</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background to match the table container */
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-container h2, .form-container h4 {
+            color: #333; /* Consistent text color */
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #6c757d; /* Matching the info box and icon colors */
+            box-shadow: none;
+        }
+
+        .form-check-label {
+            color: #6c757d; /* Muted text for labels */
+        }
+
+        .btn-primary {
+            background-color: #6c757d; /* Match the button with info icon color */
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a6268; /* Darker shade on hover */
+        }
+
+        .form-heading {
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form action="/admin/addPackage" method="post" enctype="multipart/form-data">
+            <h2 class="form-heading">Create Shipping Package</h2>
+            <input type="text" class="form-control mb-3" placeholder="PackageID"  name="trackingNumber" hidden>
+            <!-- Sender Details -->
+            <div class="form-section">
+                <h4>Sender Details</h4>
+                <input type="text" class="form-control mb-3" placeholder="Sender Name" name="senderName" required>
+                <input type="email" class="form-control mb-3" placeholder="Sender Email" name="senderEmail" required>
+                <input type="text" class="form-control mb-3" placeholder="Sender Address" name="senderAddress" required>
+                <input type="text" class="form-control mb-3" placeholder="Sender Country" name="senderCountry" required>
+               
+            </div>
+
+            <!-- Recipient Details -->
+            <div class="form-section">
+                <h4>Recipient Details</h4>
+                <input type="text" class="form-control mb-3" placeholder="Recipient Name" required name="recipientName">
+                <input type="email" class="form-control mb-3" placeholder="Recipient Email" required name="recipientEmail">
+                <input type="tel" class="form-control mb-3" placeholder="Recipient Phone Number" required name="recipientPhoneNumber">
+                <input type="text" class="form-control mb-3" placeholder="Recipient Address" required name="recipientAddress">
+                <input type="text" class="form-control mb-3" placeholder="Recipient City" required name="recipientCity">
+                <input type="text" class="form-control mb-3" placeholder="recipient Country" name="recipientCountry" required>
+            </div>
+
+            <!-- Package Details -->
+            <div class="form-section">
+                <h4>Package Details</h4>
+                <input type="text" class="form-control mb-3" placeholder="Package Name" required name="packageName">
+                <textarea class="form-control mb-3" placeholder="Package Description" rows="3" required name="packageDescription"></textarea>
+                <input type="number" class="form-control mb-3" placeholder="Weight (kg)" required name="weight">
+                <input type="text" class="form-control mb-3" placeholder="Package Value" required name="packageValue">
+            </div>
+
+            <!-- Shipping Details -->
+            <div class="form-section">
+                <h4>Shipping Details</h4>
+                <select class="form-select mb-3" name="shippingMethod">
+                    <option selected>Shipping Method</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Express">Express</option>
+                    <option value="Overnight">Overnight</option>
+                </select>
+                <label for="shippingDate">Shipping Date:</label>
+                <input type="date" class="form-control mb-3" placeholder="Shipping Date Preference" id="shippingDate" name="shipmentDate">
+
+
+                <div id="historyFields">
+                    <h3>Shipment History</h3>
+                    <div class="history-entry">
+                      <label>Status:</label>
+                      <input type="text" name="history[0][Status]" class="form-control mb-3" required>
+                
+                      <label>Date:</label>
+                      <input type="date" name="history[0][date]" class="form-control mb-3">
+
+                      <label>Location:</label>
+                      <input type="text" name="history[0][location]" class="form-control mb-3" >
+                
+                      <label>Notes:</label>
+                      <input type="text" name="history[0][notes]" class="form-control mb-3">
+                    </div>
+                  </div>
+
+                <label for="expectedDeliveryDate">Expected Delivery Date:</label>
+                <input type="date" class="form-control mb-3" placeholder="Shipping Date Preference" id="expectedDeliveryDate" name="expectedDeliveryDate">
+
+
+        
+                
+            </div>
+            <div class="form-check mb-3">
+                <label class="form-check-label" for="packageImg">
+                    Package Image
+                </label>
+                <input class="form-control mb-3" type="file" value="" id="packageImg" name="packageImage">
+            </div>
+
+            <!-- <textarea class="form-control mb-3" placeholder="Additional Message" rows="3" required></textarea> -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="insuranceCheck" name="insurance">
+                <label class="form-check-label" for="insuranceCheck">
+                    Insurance Required
+                </label>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Create Package</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

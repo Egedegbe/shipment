@@ -1,0 +1,39 @@
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <% errors.forEach(error => { %> <%= error.msg %><br />
+      <% }); %>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        style="padding: 13px;"
+      ></button>
+    </div>
+    <% } %>
+    <% if (successMessage != '') { %>
+        <div class="success-message" role="alert">
+          <%= successMessage %><br />
+          <!-- <button type="button" class="close-button" aria-label="Close">×</button> -->
+        </div>
+      <% } %>
+      
+      <% if (errorMessage != '') { %>
+        <div class="error-message" role="alert">
+          <i class="icon-exclamation"></i> <%= errorMessage %><br />
+          <!-- <button type="button" class="close-button" aria-label="Close">×</button> -->
+        </div>
+      <% } %>
+    
+    <%if(error != ''){%>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= error %><br />
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+          style="padding: 13px;"
+        ></button>
+      </div>
+      <%}%>
