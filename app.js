@@ -20,6 +20,7 @@ app.use(
 app.use(flash());
 
 app.use(methodOverride("_method")); // For supporting HTTP verbs such as PUT or DELETE
+app.set('views', path.join(__dirname, 'views'))
 app.set("view engine", "ejs"); // Set view engine to EJS
 app.use(express.static("public")); // Serve static files from "public" directory
 app.use(fileUpload()); // For handling file uploads
