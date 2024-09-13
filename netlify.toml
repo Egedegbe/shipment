@@ -1,6 +1,0 @@
-[build]
-  # Remove the build command if your app doesn't need one
-  command = "npm start"
-  # You can specify the directory where Netlify will serve the built assets if applicable
-  # If not using a build directory, you can omit the publish field
-  publish = "."
