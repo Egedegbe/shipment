@@ -70,7 +70,7 @@ h1, h2, h3, h5,
   height: 43px;
   border-radius: 0; }
   .form-control:active, .form-control:focus {
-    border-color: #f89d13; }
+    border-color: #5a6c8f; }
   .form-control:hover, .form-control:active, .form-control:focus {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
@@ -169,7 +169,7 @@ h1, h2, h3, h5,
   .ul-check.success li:before {
     color: #8bc34a; }
   .ul-check.primary li:before {
-    color: #f89d13; }
+    color: #5a6c8f; }
 
 /* Navbar */
 .site-navbar {
@@ -200,7 +200,7 @@ h1, h2, h3, h5,
   .site-navbar .site-navigation .site-menu {
     margin-bottom: 0; }
     .site-navbar .site-navigation .site-menu .active > a {
-      color: #f89d13; }
+      color: #8091b4; }
     .site-navbar .site-navigation .site-menu a {
       text-decoration: none !important;
       display: inline-block;
@@ -215,7 +215,7 @@ h1, h2, h3, h5,
         color: #fff;
         text-decoration: none !important; }
         .site-navbar .site-navigation .site-menu > li > a:hover {
-          color: #f89d13; }
+          color: #5a6c8f; }
     .site-navbar .site-navigation .site-menu .has-children {
       position: relative; }
       .site-navbar .site-navigation .site-menu .has-children > a {
@@ -237,7 +237,7 @@ h1, h2, h3, h5,
         top: 100%;
         position: absolute;
         text-align: left;
-        border-top: 2px solid #f89d13;
+        border-top: 2px solid #5a6c8f;
         -webkit-box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.1);
         border-left: 1px solid #edf0f5;
@@ -258,7 +258,7 @@ h1, h2, h3, h5,
           transition: 0s all;
           color: #343a40; }
         .site-navbar .site-navigation .site-menu .has-children .dropdown .active > a {
-          color: #f89d13 !important; }
+          color: #5a6c8f !important; }
         .site-navbar .site-navigation .site-menu .has-children .dropdown > li {
           list-style: none;
           padding: 0;
@@ -280,7 +280,7 @@ h1, h2, h3, h5,
             background: #f4f5f9;
             color: #25262a; }
       .site-navbar .site-navigation .site-menu .has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children:focus > a, .site-navbar .site-navigation .site-menu .has-children:active > a {
-        color: #f89d13; }
+        color: #5a6c8f; }
       .site-navbar .site-navigation .site-menu .has-children:hover, .site-navbar .site-navigation .site-menu .has-children:focus, .site-navbar .site-navigation .site-menu .has-children:active {
         cursor: pointer; }
         .site-navbar .site-navigation .site-menu .has-children:hover > .dropdown, .site-navbar .site-navigation .site-menu .has-children:focus > .dropdown, .site-navbar .site-navigation .site-menu .has-children:active > .dropdown {
@@ -349,12 +349,12 @@ h1, h2, h3, h5,
       position: relative;
       color: #212529; }
       .site-mobile-menu .site-nav-wrap a:hover {
-        color: #f89d13; }
+        color: #5a6c8f; }
     .site-mobile-menu .site-nav-wrap li {
       position: relative;
       display: block; }
       .site-mobile-menu .site-nav-wrap li.active > a {
-        color: #f89d13; }
+        color: #5a6c8f; }
     .site-mobile-menu .site-nav-wrap .arrow-collapse {
       position: absolute;
       right: 0px;
@@ -634,7 +634,7 @@ h1, h2, h3, h5,
   margin-top: -100px; }
 
 .feature-1, .free-quote, .feature-3 {
-  background: #f89d13;
+  background: #5a6c8f;
   padding: 30px 50px;
   color: rgba(255, 255, 255, 0.6);
   font-size: 15px; }
@@ -690,7 +690,7 @@ h1, h2, h3, h5,
       font-style: italic; }
 
 .feature-3 {
-  background: #e18a07; }
+  background: #5a6c8f; }
 
 .border-primary {
   position: relative; }
@@ -703,7 +703,7 @@ h1, h2, h3, h5,
     bottom: 0;
     width: 80px;
     height: 3px;
-    background: #f89d13; }
+    background: #5a6c8f; }
   .border-primary.text-center:after {
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -737,7 +737,7 @@ h1, h2, h3, h5,
 .how-it-work-item .number {
   width: 50px;
   height: 50px;
-  background: #f89d13;
+  background: #5a6c8f;
   color: #fff;
   line-height: 55px;
   font-weight: 300;
@@ -792,7 +792,7 @@ h1, h2, h3, h5,
   line-height: 40px;
   border-radius: 50%;
   display: inline-block;
-  background: #f89d13;
+  background: #5a6c8f;
   color: #fff; }
 
 .custom-pagination span {
