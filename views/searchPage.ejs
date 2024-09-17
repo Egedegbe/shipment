@@ -1,37 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('./partials/head.ejs') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-    body {
-        background-color: #f8f9fa; /* Light background */
-        font-family: Arial, sans-serif;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    .banner {
-        background-color: #6c757d; /* Matching theme color */
-        color: white;
+    .tracking-container {
+        max-width: 900px;
+        margin: 20px auto;
         padding: 20px;
-        text-align: center;
-        border-radius: 8px;
-        margin-top: 97px;
-    }
-
-    .responsive-box {
         background-color: #fff;
-        padding: 20px;
         border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        top: 80px;
+    }
+
+    .shipment-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 20px;
     }
 
-    .box-title {
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 10px;
+    .shipment-status {
+        font-size: 1.2em;
+        color: #5a6c8f;
     }
 
-    .info-text {
-        color: #6c757d;
-        margin: 5px 0;
+    .tracking-number h2 {
+        font-size: 1.4em;
+        color: #333;
+    }
+
+    .print-button {
+        background-color: #5a6c8f;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+    }
+
+    .print-button i {
+        margin-right: 8px;
+    }
+
+    .details-box {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .box-header {
+        background-color: #5a6c8f;
+        color: #fff;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .box-content p {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+    }
+
+    .box-content p:last-child {
+        border-bottom: none;
+    }
+
+    .box-content i {
+        margin-right: 8px;
+        color: #5a6c8f;
+    }
+
+    .package-history {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .history-header {
+        background-color: #5a6c8f;
+        color: #fff;
+        padding: 10px;
+    }
+
+    .history-entry {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .status-box {
+        display: flex;
+        align-items: center;
+    }
+
+    .status-box i {
+        margin-right: 8px;
+        color: #5a6c8f;
+    }
+
+    .history-entry:last-child {
+        border-bottom: none;
     }
 
     .table-container {
@@ -43,7 +123,7 @@
     }
 
     .table {
-        min-width: 800px; /* Ensures table doesn't shrink too much */
+        min-width: 800px;
         width: 100%;
     }
 
@@ -54,7 +134,7 @@
     }
 
     .table tbody td {
-        white-space: nowrap; /* Prevents table content from wrapping */
+        white-space: nowrap;
     }
 
     .table tbody tr {
@@ -63,89 +143,112 @@
     }
 
     .table-responsive {
-        overflow-x: auto; /* Enables horizontal scrolling */
+        overflow-x: auto;
     }
 
-    .package-image {
+    @media (max-width: 768px) {
+        .shipment-info {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .print-button {
+            margin-top: 10px;
+        }
+    }
+
+    /* Package Image Box */
+    .package-image-box {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .package-image-box img {
         max-width: 100%;
         height: auto;
         border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-top: 10px;
     }
 </style>
-
-<!-- Mirrored from preview.colorlib.com/theme/logistics/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Sep 2024 21:31:37 GMT -->
-
-<%- include('./partials/head.ejs') %>
-
 <body>
-    <div class="site-wrap">
-        <div class="site-mobile-menu">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
+
+<div class="site-wrap">
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
             </div>
-            <div class="site-mobile-menu-body"></div>
         </div>
-        <%- include('partials/nav.ejs') %>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <%- include('partials/nav.ejs') %>
+    <div class="container">
+    <div class="tracking-container">
 
-        <div class="container">
-            <!-- Banner Section -->
-            <div class="banner">
-                <h2>Order Tracking: <%= packageDetails.trackingNumber %></h2>
-                <p>Expected Delivery Date: <%=packageDetails.formattedExpectedDeliveryDate%> |     Status: <%= latestStatus %> | Date Shipped: <%=packageDetails.formattedShipmentDate%></p>
+        <!-- Shipment Status and Tracking Number -->
+        <div class="shipment-info">
+            <div class="shipment-status">
+                <i class="fas fa-box"></i> <span> Status: <%= latestStatus %> </span>
             </div>
-
-            <!-- Responsive Boxes Section -->
-            <div class="row mt-4">
-                <!-- Shipment Details Box -->
-                <div class="col-md-4">
-                    <div class="responsive-box">
-                        <h5 class="box-title">Shipment Details</h5>
-                        <p class="info-text"><strong>Package Name:</strong> <%=packageDetails.packageName%></p>
-                        <p class="info-text"><strong>Package Value:</strong> <%=packageDetails.packageValue%></p>
-                        <p class="info-text"><strong>Weight:</strong> <%=packageDetails.weight%>kg</p>
-                        <p class="info-text"><strong>Service Type:</strong> <%=packageDetails.shippingMethod%></p>
-                        <p class="info-text"><strong>Description:</strong> <%=packageDetails.packageDescription%></p>
-                        <p class="info-text"><strong>Insurance:</strong> Yes</p>
-                        <p class="info-text"><strong>Payment Method:</strong> Card</p>
-                    </div>
-                </div>
-
-                <!-- Destination Details Box -->
-                <div class="col-md-4">
-                    <div class="responsive-box">
-                        <h5 class="box-title">Destination Details</h5>
-                        <p class="info-text"><strong>Receiver Name:</strong> <%packageDetails.recipientName%></p>
-                        <p class="info-text"><strong>Receiver Email:</strong> <%=packageDetails.recipientEmail%></p>
-                        <p class="info-text"><strong>Receiver Address:</strong> <%=packageDetails.recipientAddress%></p>
-                        <p class="info-text"><strong>Expected Delivery Date:</strong> <%=packageDetails.formattedExpectedDeliveryDate%> </p>
-                    </div>
-                </div>
-
-                <!-- Origin Details Box -->
-                <div class="col-md-4">
-                    <div class="responsive-box">
-                        <h5 class="box-title">Origin Details</h5>
-                        <p class="info-text"><strong>Sender Name:</strong> <%= packageDetails.senderName%></p>
-                        <p class="info-text"><strong>Sender Address:</strong> <%=packageDetails.senderAddress%></p>
-                        <p class="info-text"><strong>Shipment Date:</strong> <%=packageDetails.formattedShipmentDate%></p>
-                    </div>
-                </div>
-
-                <!-- Package Image Box -->
-                <div class="col-md-4 mt-4">
-                    <div class="responsive-box">
-                        <h5 class="box-title">Package Image</h5>
-                        <img src="/uploads/<%= packageDetails.packageImage %>" alt="Package Image" class="package-image">
-
-                    </div>
-                </div>
+            <div class="tracking-number">
+                <h2>Shipment Tracking: <span> <%= packageDetails.trackingNumber %></span></h2>
             </div>
+            <button class="print-button">
+                <i class="fas fa-print"></i> Print Shipment
+            </button>
+        </div>
 
-            <!-- History Summary Table Section -->
+        <!-- Sender Details -->
+        <div class="details-box">
+            <h3 class="box-header">Sender Details</h3>
+            <div class="box-content">
+                <p><i class="fas fa-user"></i> Contact Name: <%= packageDetails.senderName%></p>
+                <p><i class="fas fa-address-book"></i> Contact Address: <%=packageDetails.senderAddress%></p>
+                <!-- <p><i class="fas fa-city"></i> City Collection: New York</p> -->
+                <!-- <p><i class="fas fa-map-marker-alt"></i> Origin City: Brooklyn</p> -->
+                <p><i class="fas fa-calendar-alt"></i> Date of Shipment: <%=packageDetails.formattedShipmentDate%></p>
+            </div>
+        </div>
+
+        <!-- Recipient Details -->
+        <div class="details-box">
+            <h3 class="box-header">Recipient Details</h3>
+            <div class="box-content">
+                <p><i class="fas fa-user"></i> Contact Name: <%=packageDetails.recipientName%></p>
+                <p><i class="fas fa-envelope"></i>Contact Email: <%=packageDetails.recipientEmail%></p>
+                <p><i class="fas fa-address-book"></i> Contact Address: <%=packageDetails.recipientAddress%></p>
+            </div>
+        </div>
+
+        <!-- Package Details -->
+        <div class="details-box">
+            <h3 class="box-header">Package Details</h3>
+            <div class="box-content">
+                <p><i class="fas fa-box-open"></i> Package Name:  <%=packageDetails.packageName%></p>
+                <p><i class="fas fa-dollar-sign"></i> Package Value:  <%=packageDetails.packageValue%></p>
+                <p><i class="fas fa-weight"></i> Package Weight:  <%=packageDetails.weight%>kg</p>
+                <p><i class="fas fa-shipping-fast"></i> Service Type: <%=packageDetails.shippingMethod%></p>
+<p><i class="fas fa-info-circle"></i> Description: <%=packageDetails.packageDescription%></p>
+<p><i class="fas fa-shield-alt"></i> Insurance: Yes</p>
+<p><i class="fas fa-credit-card"></i> Payment Method:Card</p>
+
+                <p><i class="fas fa-calendar-day"></i> Shipment Date:<%=packageDetails.formattedShipmentDate%></p>
+                <p><i class="fas fa-calendar-check"></i> Expected Delivery: <%=packageDetails.formattedExpectedDeliveryDate%></p>
+            </div>
+        </div>
+
+        <!-- Package Image Box -->
+        <div class="package-image-box">
+            <h3>Package Image</h3>
+            <img src="/uploads/<%= packageDetails.packageImage %>" alt="Package Image" class="package-image">
+
+        </div>
+
+        <!-- Package History -->
+        <div class="package-history">
             <div class="table-container">
                 <h5 class="mb-3">Shipment History</h5>
                 <div class="table-responsive">
@@ -175,13 +278,11 @@
                             <% }); %>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <%- include('./partials/footer.ejs') %>
     </div>
-
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="/js/jquery-ui.js"></script>
@@ -209,4 +310,3 @@
         data-cf-beacon='{"rayId":"8bf190913ccab8f1","version":"2024.8.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}},"token":"cd0b4b3a733644fc843ef0b185f98241","b":1}'
         crossorigin="anonymous"></script>
 </body>
-<!-- Mirrored from preview.colorlib.com/theme/logistics/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Sep 2024 21:31

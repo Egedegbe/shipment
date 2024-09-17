@@ -23,6 +23,7 @@ router.post('/search', async (req, res) => {
     try {
         // Search for the shipment by tracking number
         const shipment = await Shipment.findOne({ trackingNumber: search });
+        console.log(shipment)
 
         if (!shipment) {
             req.flash("error_msg", "Shipment not found");
